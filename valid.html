@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		
+	</script>
+</head>
+<body>
+	<!---start form---->
+	<center><h2> REGISTRACTION FORM</h2></center>
+	<form onsubmit=" return formvalidation()">
+
+		Name :
+		<input type="text" name="" placeholder="enter name" id="name">
+		<span id="message"></span>
+		<br>
+		<br>
+		Password :
+		<input type="password" name="password" placeholder="enter password" id="password">
+		<span id="passwordmessage"></span>
+		<br>
+		<br>
+		Confirm password :
+		<input type="password" name="" placeholder="confirm your password" id="confirmpassword">
+		<span id="confirm"></span>
+		<br>
+		<br>
+		Phone :
+		<input type="phone" name="" placeholder="enter number" id="phonenumber">
+		<span id="phone"></span>
+		<br>
+		<br>
+		File upload :
+		<input type="file" id="file">
+		<br><br>
+		<button type="submit">SUBMIT</button>
+     <--- file----->
+     <!--- convert file---->
+		<center><h2>Converting JSON Text into Javascript Object</h2></center> 
+            <b>JSON Object :</b> 
+            <p id="demo"></p> 
+            <b>Use of Javascript object :</b> 
+            <p id="demo1"></p> 
+     <!---end---------->
+      <!--- stroage----->
+            <center><h2>LOCAL STORAGE</h2></center> 
+            <div id="result"></div>
+       <!-- end--->
+	</form>
+
+	<script type="text/javascript">
+		function formvalidation(){
+			var a=document.getElementById('name').value;
+			var b=document.getElementById('password').value;
+			var c=document.getElementById('confirmpassword').value;
+			var d=document.getElementById('phonenumber').value;
+
+			if(a==""){
+				document.getElementById('message').innerHTML="please fill the name field";
+				return false;
+			}
+			if((a.length <= 2) || (a.length > 20))
+			{
+				document.getElementById('message').innerHTML="name length must be between 2 and 20";
+				return false;
+			}
+
+			if(!isNaN(a)){
+                document.getElementById('message').innerHTML="only character are allow";
+				return false;
+			}
+
+			if(b==""){
+				document.getElementById('passwordmessage').innerHTML="please fill the password field";
+				return false;
+			}
+			if((b.length <= 2) || (b.length > 20)){
+				document.getElementById('passwordmessage').innerHTML="password length must be betwwen 5 and 10";
+				return false;
+			}
+			if(c==""){
+				document.getElementById('confirm').innerHTML="enter this fileds to confirm password ";
+				return false;
+			}
+			if(b!=c){
+				document.getElementById('confirm').innerHTML="password does not match confirm password";
+				return false;
+			}
+			if(d==""){
+				document.getElementById('phone').innerHTML="please fill the phone number  ";
+				return false;
+			}
+			if((d.length <= 2) || (d.length > 20)){
+				document.getElementById('phone').innerHTML="phone number length 10";
+				return false;
+			}
+			if(isNaN(d)){
+                document.getElementById('phone').innerHTML="character are not allow";
+				return false;
+			}
+
+		}
+		document.getElementById('file').value;
+
+		var jsonobj ='{ "name":"Brendan Eich","designerof":"Javascript","bornin":"1961" }'; 
+  
+        // Here we convert JSON to object 
+           var obj = JSON.parse(jsonobj); 
+  
+            document.getElementById("demo1").innerHTML =  obj.name + ", who was born in " + obj.bornin + ", was the designer of " + obj.designerof; 
+             document.getElementById("demo").innerHTML =jsonobj;
+
+             
+             if (typeof(Storage) !== "undefined")
+              {
+    
+                localStorage.setItem("lastname", "Smith");
+        
+                document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+              } 
+             else {
+               document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+             }
+
+		
+	</script>
+
+</body>
+</html>
